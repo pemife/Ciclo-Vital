@@ -153,10 +153,11 @@ var ciclo = setInterval(cicloVital, 1000);
 
 var año = 0;
 
+mostrarEstadistica();
+
 function cicloVital(){
   var milagroDeLaVida = Math.ceil(Math.random()*100);
   var hFertiles = h.humanosEdadFertil();
-  var parFer = h.parejasFertiles();
   for (var i = 0; i < h.vivos.length; i++) {
     h.vivos[i].crecer();
 
@@ -164,7 +165,6 @@ function cicloVital(){
       h.muerte(h.vivos[i]);
     }
   }
-  h.mostrarHumanos();
 
   if(h.probRepro() > milagroDeLaVida){
     h.reproducirse(1);
@@ -172,8 +172,13 @@ function cicloVital(){
 
   año++;
 
+  h.mostrarHumanos();
+  mostrarEstadistica();
+}
+
+function mostrarEstadistica(){
   var estadistica = "";
-  estadistica = "Hay " + hFertiles[0] + " mujeres y " + hFertiles[1] + " hombres en edad fertil";
+  estadistica = "Hay " + h.humanosEdadFertil()[0] + " mujeres y " + h.humanosEdadFertil()[1] + " hombres en edad fertil";
   estadistica += "</br>Hay una probabilidad de " + h.probRepro() + "% de nacimiento";
   estadistica += "</br>Hay " + h.muertos.length + " fallecidos";
   estadistica += "</br>Hay " + h.vivos.length + " vivos";
