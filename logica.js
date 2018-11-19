@@ -115,8 +115,7 @@ class Humanidad{
 
     for (var i=0; i < this.vivos.length; i++) {
       if( this.vivos[i].edad > 14 && this.vivos[i].edad < 45){
-        if(this.vivos[i].genero == "F"){  contador[0]++;};
-        if(this.vivos[i].genero == "M"){  contador[1]++;};
+        this.vivos[i].genero == "F" ? contador[0]++ : contador[1]++;
       }
     }
 
